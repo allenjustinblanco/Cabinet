@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -26,7 +25,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'simple_form', '~> 4.1'
+gem 'haml', '~> 5.0', '>= 5.0.4'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
