@@ -1,6 +1,6 @@
 class DocsController < ApplicationController
 
-	before_action :find_doc, only: [:show, :update, :edit,:destroy]
+	before_action :find_doc, only: [:show, :edit, :update ,:destroy]
 
 	def index
 		@docs = Doc.all.order("created_at DESC")
@@ -28,9 +28,16 @@ class DocsController < ApplicationController
 	end
 
 	def update
+		if @doc.update(doc_params)
+			redirect_to @doc
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
+		@doc.destroy
+		redirect_to docs_path
 	end
 
 	private
