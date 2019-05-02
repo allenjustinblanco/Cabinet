@@ -1,0 +1,77 @@
+!!!
+%html
+%head
+  %title FileCabinet | Your life's work!
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  = csrf_meta_tags
+%body
+  %header
+    %nav.navbar.navbar-expand-lg(style="background-color: #475B5A; color: #7FD8BE;")
+      = link_to "FileCabinet", root_path, id: "logo", class: "navbar-brand"
+
+      %button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+        %span.navbar-toggler-icon
+
+      %div.collapse.navbar-collapse#navbarNav
+        %ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+          - if user_signed_in?
+            %li.nav-item
+              = link_to "Create Doc", new_doc_path, class: "nav-link"
+            %li.nav-item
+              = link_to "Sign_Out", destroy_user_session_path, method: :delete, class: "nav-link"
+            %li.nav-item
+              .nav-link.disabled(style="color: #7FD8BE;")
+                .notice= notice
+            %li.nav-item
+              .nav-link.disabled(style="color: #7FD8BE;")
+                .alert= alert
+          - else 
+            %li.nav-item
+              = link_to "Log In", new_user_session_path, class: "nav-link"
+            %li.nav-item
+              .nav-link.disabled(style="color: #7FD8BE;")
+                .notice= notice
+            %li.nav-item
+              .nav-link.disabled(style="color: #7FD8BE;")
+                .alert= alert
+
+  = yield
+
+  %script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
+  %script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js")
+  %script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js")
+
+/   !!!
+/ %html
+/ %head
+/   %title FileCabinet | Your life's work!
+/   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+/   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+/   = csrf_meta_tags
+/ %body
+/   %header
+/     %nav.navbar(style="background-color: #011627; color: #F15025;")
+/       = link_to "FileCabinet", root_path, class: "navbar-brand"
+
+/       %ul.navbar-nav
+/         %li.nav-item
+/           .nav-link.disabled
+/             .notice= notice
+/         %li.nav-item
+/           .nav-link.disabled
+/             .alert= alert
+/         - if user_signed_in?
+/           %li.nav-item
+/             = link_to "Create Doc", new_doc_path, class: "nav-link"
+/           %li.nav-item
+/             = link_to "Sign_Out", destroy_user_session_path, method: :delete, class: "nav-link"
+/         - else 
+/           %li.nav-item
+/             = link_to "Log In", new_user_session_path, class: "nav-link"
+
+/   = yield
+
+/   %script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js")
+/   %script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js")
+/   %script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js")
