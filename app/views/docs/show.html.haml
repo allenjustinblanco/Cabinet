@@ -1,8 +1,12 @@
-%h1= @doc.title
-%p= @doc.content
-
-
-/ the paths come from rake routes
-= link_to "All Docs", docs_path
-= link_to "Fix Doc", edit_doc_path(@doc)
-= link_to "Trash It", doc_path(@doc), method: :delete, data: { confirm: "Are you sure?" }
+.container
+	.card.mt-5
+		.card-title.mt-4
+			%h1.text-center= @doc.title
+		.card-body
+			%p= simple_format(@doc.content)
+			.btn.btn-flat
+				= link_to "All Docs", docs_path
+			.btn.btn-flat.float-right
+				= link_to "Fix Doc", edit_doc_path(@doc)
+			.btn.btn-flat.float-right
+				= link_to "Trash It", doc_path(@doc), method: :delete, data: { confirm: "Are you sure?" }
