@@ -1,6 +1,13 @@
-- @docs.each do |doc|
-	%h2= link_to doc.title, doc
-	%p= time_ago_in_words(doc.created_at)
-	%p= truncate(doc.content, length:60)
-
-= link_to "Create Doc", new_doc_path
+- unless @docs.blank?
+	.container.mt-5
+		- @docs.each do |doc|
+			.card.mt-3.hover(style="background-color: #56A3A6;")
+				.card-body(style="color: #475B5A;")
+					%p= time_ago_in_words(doc.created_at)
+					.card-title.text-center
+						%h2= link_to doc.title, doc
+					%p.text-center= truncate(doc.content, length:60)
+- else
+	%h2 Create Doc!
+	%p Start Creating Documents and Organize your life!
+	%button= link_to "Create Doc", new_doc_path
