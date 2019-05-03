@@ -1,4 +1,8 @@
 = simple_form_for @doc do |f|
-	= f.input :title
-	= f.input :content
-	= f.button :submit
+	.form-group
+		%label Title
+		.form-control= f.input_field :title, class: "w-100"
+	.form-group
+		%label Content
+		.form-control= f.input_field :content, class: "w-100", rows: "20"
+	= f.button :submit, class: "btn btn-flat"

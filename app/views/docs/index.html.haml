@@ -8,6 +8,7 @@
 						%h2= link_to doc.title, doc
 					%p.text-center= truncate(doc.content, length:60)
 - else
-	%h2 Create Doc!
+	%h2(style="color: #475B5A;") Create Doc!
 	%p Start Creating Documents and Organize your life!
-	%button= link_to "Create Doc", new_doc_path
+	.btn.btn-flat
+		= link_to "Create Doc", new_doc_path
